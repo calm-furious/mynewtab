@@ -34,5 +34,5 @@ def main():
     with open('dist/style.css', 'w', encoding='utf-8') as f:
         f.write(css)
 
-if name == 'main':
+if __name__ == 'main':
     main()
