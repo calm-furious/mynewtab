@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Quick Links</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Content will be injected here -->
+        {{content}}
+    </div>
+    <footer>
+        <p>Updated: {{date}}</p>
+    </footer>
+    <script>
+        // Add search functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const search = document.createElement('input');
+            search.type = 'text';
+            search.placeholder = 'Search links...';
+            search.className = 'search';
+            document.querySelector('.container').prepend(search);
+
+            search.addEventListener('input', (e) => {
+                const value = e.target.value.toLowerCase();
+                document.querySelectorAll('table tr').forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(value) ? '' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
